@@ -1,12 +1,11 @@
-## Codecademy's NodeJS Path: Mixed-messages Project
+## Codecademy's NodeJS Path: *Mixed-messages* Project
 
 ### Short description
-Name: Random workout generator
-Aim: Return three random phrases: what kind of workout to do, for how long and inspirational quote.
-Technology: JavaScript. One function.
+__Project Title:__ Random workout generator
+__Description:__ One function. Returns three random phrases: what kind of workout to do, for how long and inspirational quote.
+__Technology:__ JavaScript.
 
-Hope you enjoy :)
 
 
 regards,
-YZ
+Yehor
