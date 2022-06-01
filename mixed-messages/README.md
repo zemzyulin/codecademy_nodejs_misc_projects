@@ -7,5 +7,5 @@ __Technology:__ JavaScript.
 
 
 
-Best regards,
+Best regards,  
 Yehor Zemzyulin
