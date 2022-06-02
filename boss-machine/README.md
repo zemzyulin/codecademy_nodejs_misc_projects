@@ -1,7 +1,7 @@
 ## Codecademy's NodeJS Path: *Boss Machine* Project
 
 ### Short description
-__Project Title:__ Boss Machine
+__Project Title:__ Boss Machine  
 __Description:__ The goal of this project was to create an entire API to serve information to a Boss Machine, a unique management application for today's most accomplished (evil) entrepreneurs. Front-end and testing was provided by Codecademy.
 
 __Features:__

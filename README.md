@@ -1,4 +1,4 @@
-## Codecademy NodeJS Miscellaneous Projects
+## Codecademy NodeJS Notable Projects
 
 This repository includes notable mini-projects from Codecademy's Back-End Engineer Career Path: NodeJS.  
 I took this course in early 2022.  
