@@ -7,7 +7,8 @@ Here's the link to its syllabus: https://www.codecademy.com/learn/paths/back-end
   
 ### List of notable projects (from easy to more complex)
 1. Mixed Messages (Javascript)
-2. Find Your Hat Game (Javascript (Classes), Node.js)  
+2. Find Your Hat Game (Javascript (Classes), Node.js)
+3. Boss Machine (Javascript, Node.js, Express)  
 
 
 ... to be updated
