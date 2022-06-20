@@ -37,10 +37,10 @@ router.delete('/:envId', (req, res, next) => {
     envelope !== null ? res.status(204).send() : res.status(400).send('Invalid input');
 })
 
-// Transfer beetween envelopes routes
+// Transfer funds beetween envelopes routes
 router.post('/transfer/:fromId/:toId', (req, res, next) => {
     const transaction = transfer(req.params.fromId, req.params.toId, req.body.amount);
-    transaction !== null ? res.send('Transfer completed.') : res.status(400).send('Invalid input');
+    transaction !== null ? res.send('Transfer completed') : res.status(400).send('Invalid input');
 })
 
 

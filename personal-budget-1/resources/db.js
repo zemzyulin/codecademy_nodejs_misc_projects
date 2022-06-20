@@ -41,7 +41,6 @@ const addEnvelope = envelope => {
     if (currentBudget - envelope.budget < 0) { return null }
     envelope.id = `${envelopeCount++}`;
     currentBudget -= envelope.budget;
-    //console.log(currentBudget);
     envelopes.push(envelope);
     return envelope;
 }

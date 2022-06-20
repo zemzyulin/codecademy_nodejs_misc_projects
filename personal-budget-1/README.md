@@ -14,6 +14,9 @@ __How to use:__
 
 __Technology:__ JavaScript, Node.js, Express.  
 
+__Test with Swagger__
+Documentation and testing available at `http://localhost:4000/api-docs`
+
 __Additional info on routes for testing:__
  - Retrieve envelopes using `GET /api/envelopes`
  - Retrieve a single envelope using `GET /api/envelopes/{id}`
