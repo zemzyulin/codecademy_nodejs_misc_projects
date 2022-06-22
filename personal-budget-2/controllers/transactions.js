@@ -31,7 +31,7 @@ const makeTransaction = async (req, res, next) => {
             // Update envelope
             await pool.query('UPDATE envelopes SET amount = $1 WHERE id = $2', [parseInt(envelope.rows[0].amount) - parseInt(amount), envelope.rows[0].id])
             // Send response
-            res.status(200).send(results.rows[0]);
+            res.status(201).send(results.rows[0]);
         }
     } catch (err) {
         res.status(500).send(err.message);

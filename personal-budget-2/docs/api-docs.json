@@ -1,0 +1,541 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "description": "Personal Budget 2 Project (envelope budgeting). Codecademy Node.js Career Path.",
+        "version": "1.0.0",
+        "title": "Personal Budget 2",
+        "contact": {
+            "email": "yehor.zemzyulin@gmail.com"
+        },
+        "license": {}
+    },
+    "servers": [{
+        "url": "/api"
+    }],
+    "paths" : {
+        "/envelopes" : {
+            "get" : {
+                "description": "Returns all envelopes",
+                "summary": "Retrieve all envelopes",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "envelopes": {
+                                        "value": [{"id":"1","category":"Investing","budget":3020},
+                                            {"id":"2","category":"Housing","budget":2250},
+                                            {"id":"3","category":"Personal Spending","budget":2510}]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Records not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Envelopes"]
+            },
+            "post": {
+                "description": "Creates a new envelope",
+                "summary": "Add envelope",
+                "requestBody": {
+                    "description": "Budget category and amount for new envelope",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/envelope"
+                            },
+                            "example": {"category":"Taxes","amount":3020}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Returns created envelope",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "description": "ID of envelope",
+                                            "type": "integer"
+                                        },
+                                        "category": {
+                                            "description": "Budget category",
+                                            "type": "string"
+                                        },
+                                        "amount": {
+                                            "description": "Amount to be allocated to envelope",
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "example": {"id":"1","category":"Investing","amount":3020}
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Envelopes"]
+            }
+        },
+        "/envelopes/{id}": {
+            "get": {
+                "description": "Returns envelope based on ID",
+                "summary": "Find envelope by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of envelope",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": 1
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "description": "ID of envelope",
+                                            "type": "integer"
+                                        },
+                                        "category": {
+                                            "description": "Budget category",
+                                            "type": "string"
+                                        },
+                                        "amount": {
+                                            "description": "Amount to be allocated to envelope",
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "example": {"id":"1","category":"Investing","amount":3020}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Envelope not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Envelopes"]
+            },
+            "put": {
+                "description": "Updates envelope based on ID",
+                "summary": "Update envelope by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of envelope",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": 1
+                }],
+                "requestBody": {
+                    "description": "Budget category and amount to update envelope",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/envelope"
+                            },
+                            "example": {"category":"Investing","amount":3020}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "description": "ID of envelope",
+                                            "type": "integer"
+                                        },
+                                        "category": {
+                                            "description": "Budget category",
+                                            "type": "string"
+                                        },
+                                        "amount": {
+                                            "description": "Amount to be allocated to envelope",
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "example": {"id":"1","category":"Investing","amount":3020}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Envelope not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Envelopes"]
+            },
+            "delete": {
+                "description": "Deletes envelope based on ID",
+                "summary": "Delete envelope by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of envelope",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": 1
+                }],
+                "responses": {
+                    "204": {
+                        "description": "Envelope deleted"
+                    },
+                    "404": {
+                        "description": "Envelope not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Envelopes"]
+            }
+        },
+        "/envelopes/transfer/{fromId}/{toId}": {
+            "post": {
+                "description": "Transfer funds between envelopes",
+                "summary": "Transfer funds between envelopes by IDs",
+                "parameters": [
+                    {
+                        "name": "fromId",
+                        "in": "path",
+                        "description": "ID of envelope from which to withdraw",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "toId",
+                        "in": "path",
+                        "description": "ID of envelope to which to deposit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 2
+                    }
+                ],
+                "requestBody": {
+                    "description": "Amount to transfer",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                    "properties": {
+                                        "amount": {
+                                            "description": "Amount to transfer between envelopes",
+                                            "type": "integer"
+                                        }
+                                    }
+                            },
+                            "example": {"amount":3020}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Funds transferred successfully"
+                    },
+                    "400": {
+                        "description": "Invalid input / Insufficient funds in envelope"
+                    },
+                    "404": {
+                        "description": "Envelope not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Envelopes"]
+            }
+        },
+        "/transactions": {
+            "get" : {
+                "description": "Returns all transactions",
+                "summary": "Retrieve all transactions",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "transactions": {
+                                        "value": [
+                                            {   "id": 1,
+                                                "envelope_id": 3,
+                                                "amount": "100",
+                                                "receipient": "John Doe",
+                                                "date": "2022-06-20T21:00:00.000Z"
+                                            },
+                                            {
+                                                "id": 2,
+                                                "envelope_id": 1,
+                                                "amount": "2000",
+                                                "receipient": "Jane Doe",
+                                                "date": "2022-06-20T21:00:00.000Z"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Records not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Transactions"]
+            },
+            "post": {
+                "description": "Creates a new transaction",
+                "summary": "Add transaction",
+                "requestBody": {
+                    "description": "Budget category, amount and receipient for transaction",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/req_transaction"
+                            },
+                            "example": {"category":"Taxes","amount":320,"receipient": "John Doe"}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Returns created transaction",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/transaction"
+                                },
+                                "example": {"id":"1","envelope_id": 11,"amount": "100","receipient": "John Doe",
+                                    "date": "2022-06-21T21:00:00.000Z"}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Insufficient funds in envelope"
+                    },
+                    "404": {
+                        "description": "Envelope not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Transactions"]
+            }
+        },
+        "/transactions/{id}": {
+            "get": {
+                "description": "Returns transaction based on ID",
+                "summary": "Find transaction by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of transaction",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": 1
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/transaction"
+                                },
+                                "example": {"id":"1","envelope_id": 11,"amount": "100","receipient": "John Doe",
+                                    "date": "2022-06-21T21:00:00.000Z"}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Transaction not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Transactions"]
+            },
+            "put": {
+                "description": "Updates transaction based on ID",
+                "summary": "Update transaction by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of transaction",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": 1
+                }],
+                "requestBody": {
+                    "description": "Budget category and amount to update envelope",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/req_transaction"
+                            },
+                            "example": {"category":"Taxes","amount":320,"receipient": "John Doe"}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/transaction"
+                                },
+                                "example": {"id":"1","envelope_id": 11,"amount": "100","receipient": "John Doe",
+                                    "date": "2022-06-21T21:00:00.000Z"}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Insufficient funds in envelope"
+                    },
+                    "404": {
+                        "description": "Envelope not found / Transaction not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Transactions"]
+            },
+            "delete": {
+                "description": "Deletes transaction based on ID",
+                "summary": "Delete transaction by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID of transaction",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": 1
+                }],
+                "responses": {
+                    "204": {
+                        "description": "Transaction deleted"
+                    },
+                    "404": {
+                        "description": "Transaction not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "tags": ["Transactions"]
+            }
+        }
+    },
+    "components": {
+        "envelope": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "description": "Budget category",
+                    "type": "string"
+                },
+                "amount": {
+                    "description": "Amount to be allocated to envelope",
+                    "type": "integer"
+                }
+            }
+        },
+        "req_transaction": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "description": "Budget category",
+                    "type": "string"
+                },
+                "amount": {
+                    "description": "Amount of transaction",
+                    "type": "integer"
+                },
+                "receipient": {
+                    "description": "Receipient of funds",
+                    "type": "string"
+                }
+            }
+        },
+        "transaction": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "ID of transaction",
+                    "type": "integer"
+                },
+                "envelope_id": {
+                    "description": "ID of envelope",
+                    "type": "integer"
+                },
+                "amount": {
+                    "description": "Amount of transaction",
+                    "type": "integer"
+                },
+                "receipient": {
+                    "description": "Receipient of funds",
+                    "type": "string"
+                },
+                "date": {
+                    "description": "Date of transaction",
+                    "type": "date"
+                }
+            }
+        }
+    }
+}
