@@ -7,5 +7,29 @@
     "pg": "^8.7.3",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.4.0"
-  }
+  },
+  "engines": {
+    "node": "16.13.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "personal-budget-2",
+  "description": "__Project Title:__ Personal Budget 2  \r __Description:__ Node/Express API to manage a portfolio budget using a budget envelope strategy. Data is stored in PostgreSQL database.  \r __User can:__\r - Create, read, update and delete envelopes\r - Transfer funds between envelopes\r - Create, read, update and delete transactions (records of funds spent from each envelope)",
+  "version": "1.0.0",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "node.js",
+    "express",
+    "postregsql",
+    "heroku",
+    "envelope",
+    "budgeting"
+  ],
+  "author": "Yehor Zemzyulin",
+  "license": "ISC"
 }
