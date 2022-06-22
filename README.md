@@ -10,6 +10,7 @@ Here's the link to its syllabus: https://www.codecademy.com/learn/paths/back-end
 2. Find Your Hat Game (Javascript (Classes), Node.js)
 3. Boss Machine (Javascript, Node.js, Express)
 4. Personal Budget 1 (Javascript, Node.js, Express)
+5. Personal Budget 2 (Javascript, Node.js, Express, PostgreSQL)
 
 
 ... to be updated
