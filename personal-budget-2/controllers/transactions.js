@@ -13,6 +13,7 @@ const getTransactions = async (req, res, next) => {
         res.status(500).send(err.message);
     }
 }
+
 // Make a transaction (@post /api/transactions)
 const makeTransaction = async (req, res, next) => {
     const { category, amount, receipient } = req.body;
@@ -111,7 +112,6 @@ const deleteTransaction = async (req, res, next) => {
         res.status(500).send(err.message);
     }
 }
-
 
 
 module.exports = { getTransactions, makeTransaction, getTransaction, updateTransaction, deleteTransaction }

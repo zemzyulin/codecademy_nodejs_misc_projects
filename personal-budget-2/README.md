@@ -12,12 +12,15 @@ __User can:__
 1. Complete system of routes to handle all requests from front-end.
 2. Data is stored/retrieved from PostgreSQL database.
 3. Input validation for all requests.
+4. Available on the web via Heroku.
 
 __How to use__
-1. Install dependencies with `npm install`
-2. Launch server with `node server.js` or `npm run start`
+1. Web: https://personal-budget-2.herokuapp.com/api-docs/
+2. Locally:
+- Install dependencies with `npm install`
+- Launch server with `node server.js` or `npm run start`
 
-__Technology:__ JavaScript, Node.js, Express, PostgreSQL
+__Technology:__ JavaScript, Node.js, Express, PostgreSQL, Heroku
 
 ### Documentation
 __Test with Swagger:__

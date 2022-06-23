@@ -26,8 +26,19 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {customCs
 
 // Start server
 app.get('/', (req, res, next) => {
-    res.send(`Server running on port: ${PORT}.\n Go to http://localhost:${PORT}/api-docs for instructions on routes.`);
+    res.format({
+        'text/html': function () {
+            res.send('<h3>Personal Budget 2 Project for Codecademy\'s NodeJS Path</h3><br>' + 
+            '<div>For documentation please visit: <a href="https://personal-budget-2.herokuapp.com/api-docs/">https://personal-budget-2.herokuapp.com/api-docs/</a></div>' + 
+            '<div>or if running locally: <a href="http://localhost:4000/api-docs">http://localhost:4000/api-docs</a></div>');
+        },
+        default: function () {
+            res.send(`For documentation please visit: https://personal-budget-2.herokuapp.com/api-docs/ 
+                Or if running locally: http://localhost:${PORT}/api-docs`);
+        }
+    })
 })
+
 app.listen(PORT, () => {
     console.log(`Server is listening on port: ${PORT}`);
 })
